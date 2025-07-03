@@ -28,12 +28,29 @@ This project implements a real-time mixed reality system to support surgical scr
 
 We conducted a user study with **34 participants** to evaluate user attention and placement performance across three visualization conditions: **Baseline**, **Replica**, and **Mirror**.
 
-We analyzed absolute position error to assess placement accuracy across conditions. Statistical analysis was conducted using Python and R, including normality tests, non-parametric comparisons, and TOST equivalence testing.
+### Attention Analysis
 
-Participants’ gaze was logged using HoloLens 2 eye-tracking data, where each gaze ray was intersected with virtual hitboxes to identify the visual target per second.
+We visualized eye-tracking data as heatmaps using Unity to analyze user attention across conditions.
 
 ![Heatmaps](./Docs/Images/Heatmaps.png)
 
+### Performance Analysis
+
+We analyzed log data to evaluate placement performance by comparing absolute position error across conditions using Python and R.
+
+The statistical analysis followed these steps:
+
+1. Checked for normality with the Shapiro-Wilk test, which showed **p < 0.05**, indicating the data were not normally distributed.
+2. Tested overall differences between groups using the non-parametric **Kruskal-Wallis test**, which showed a significant difference.
+3. Conducted pairwise comparisons with the **Wilcoxon rank-sum test** (Bonferroni-corrected), revealing a significant difference between Replica and Mirror.
+4. Assessed statistical equivalence using **two one-sided tests (TOST)**, confirming that Baseline and Mirror were statistically equivalent.
+
+**Summary**:  
+- Replica performed significantly better than Mirror.  
+- Baseline and Mirror were statistically equivalent.  
+- No significant difference was found between Replica and Baseline.
+
+![PerformancePlot](./Docs/Images/PlotsSmall_corrected.png)
 
 
 ## License and Citation
